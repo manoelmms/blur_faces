@@ -6,7 +6,7 @@ O intuito deste projeto é desenvolver uma **ferramenta que borre o rosto de uma
 
 # Funcionamento
 
-O código desse projeto também está disponível para ser usado em um [notebook no Google Colaboratory](https://colab.research.google.com/drive/1sIAmw0SzXdhPXB8pVGIm2pLdSdVUxRhq?usp=sharing), sendo necessário o uso da GPU para o funcionamento da biblioteca *dlib*, necessário para a IA.
+O código desse projeto também está disponível para ser usado em um [notebook no Google Colaboratory](https://colab.research.google.com/drive/1sIAmw0SzXdhPXB8pVGIm2pLdSdVUxRhq?usp=sharing), sendo necessário o uso da GPU para o funcionamento da biblioteca *dlib* no Colab, necessário para a IA.
 
 Para o reconhecimento dos rostos, foi usada a IA conhecida como [face_recognition](https://github.com/ageitgey/face_recognition), feita por [ageitgey](https://github.com/ageitgey), pois é uma API bem simples e documentada de Python.
 
@@ -50,7 +50,7 @@ No notebook há 4 funções principais:
   - A IA não consegue identificar um rosto se há alguma obstrução na face, isso pode causar erros frequentes nos vídeos
   - A IA não consegue indentificar uma face em que não esteja olhando diretamente para a câmera, isso pode causar erros frequentes em fotos e vídeos
   - A IA não consegue encontrar um rosto muito distante sem um alto custo computacional e com precisão, o que causa erros frequentes em algumas fotos e vídeos.
-  - A IA reconhece com menor taxa de sucesso rostos em um arquivo .jpg, logo o ideal seria no formato .png
+  - [A IA reconhece com menor taxa de sucesso rostos em um arquivo .jpg, logo o ideal seria no formato .png](https://github.com/ageitgey/face_recognition/issues/1421)
   - Imagens com baixa iluminação possuem uma baixa taxa de reconhecimento
   - Vídeos muito grandes demoram muito para serem analisados
 # Agradecimentos 
