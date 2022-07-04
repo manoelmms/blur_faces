@@ -22,7 +22,7 @@ No notebook há 4 funções principais:
   - ***extrai_video***
     >Esta função possui como entrada (filename), sendo o filename o nome/caminho do vídeo a ser extraído em todos os seus frames e seu audio.
     
-    >Possui como especificação colocar todos os frames inalterados do vídeo no formato .jpg e seu áudio no formato .mp3 na pasta "./video"
+    >Possui como especificação colocar todos os frames inalterados do vídeo no formato .png e seu áudio no formato .mp3 na pasta "./video"
   - ***censura_video***
     >Esta função possui como entrada (filename, number_of_times_to_upsample = 1), sendo o filename o nome/caminho do vídeo a ser alterado e um parâmetro opcional "number_of_times_to_upsample", que comanda a precisão para encontar os rostos mais distantes em cada frame, porém quanto mais alto é o valor, mais lento fica. Definido como 1 por padrão.
 
