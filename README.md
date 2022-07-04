@@ -50,6 +50,8 @@ No notebook há 4 funções principais:
   - A IA não consegue identificar um rosto se há alguma obstrução na face, isso pode causar erros frequentes nos vídeos
   - A IA não consegue indentificar uma face em que não esteja olhando diretamente para a câmera, isso pode causar erros frequentes em fotos e vídeos
   - A IA não consegue encontrar um rosto muito distante sem um alto custo computacional e com precisão, o que causa erros frequentes em algumas fotos e vídeos.
+  - A IA reconhece com menor taxa de sucesso rostos em um arquivo .jpg, logo o ideal seria no formato .png
+  - Imagens com baixa iluminação possuem uma baixa taxa de reconhecimento
   - Imagens e, principalmente, vídeos muito grandes demoram muito para serem analisados
 # Agradecimentos 
   - Ao professor João Paixão pelas aulas
