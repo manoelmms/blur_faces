@@ -48,7 +48,6 @@ def censura_foto(filename, number_of_times_to_upsample = 2):
 
   image = face_recognition.load_image_file(filename)
   face_locations = face_recognition.face_locations(image, number_of_times_to_upsample)
-
   for (top, right, bottom, left) in face_locations: 
     censura_rosto(filename, top, right, bottom, left)
 
@@ -68,7 +67,7 @@ def extrai_video(filename):
   count = 0 
 
   while success:
-    cv2.imwrite("./video/" + "frame%s.jpg" % str(count).zfill(8), image)     
+    cv2.imwrite("./video/" + "frame%s.png" % str(count).zfill(8), image)     
     success,image = vidcap.read()
     count += 1
 
@@ -80,7 +79,7 @@ def censura_video(filename, number_of_times_to_upsample = 1):
   #Atenção: Talvez seja possível fazer usando Batch para ser mais rápido na GPU, porém sempre falta memória!
   extrai_video(filename)
 
-  files = glob.glob(f"/content/video/*.jpg")
+  files = glob.glob(f"/content/video/*.png")
   files.sort()
 
   for frames in tqdm(files, desc="Censurando os Frames... " ):
@@ -105,3 +104,15 @@ def censura_video(filename, number_of_times_to_upsample = 1):
   #Apagando a pasta "./video/" e o "output.mp4" para evitar mesclagem de frames
   shutil.rmtree(os.path.join("./", "video"))
   os.remove("./output.mp4")
+  print("Concluido com Sucesso!")
+
+from google.colab.patches import cv2_imshow
+original = cv2.imread("test.jpg")
+print("Foto Original: ")
+cv2_imshow(original)
+censura_foto("test.jpg")
+print("Resultado: ")
+result = cv2.imread("test.jpg")
+cv2_imshow(result)
+
+censura_video("test.mp4", 1)
