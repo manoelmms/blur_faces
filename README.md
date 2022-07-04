@@ -52,7 +52,7 @@ No notebook há 4 funções principais:
   - A IA não consegue encontrar um rosto muito distante sem um alto custo computacional e com precisão, o que causa erros frequentes em algumas fotos e vídeos.
   - A IA reconhece com menor taxa de sucesso rostos em um arquivo .jpg, logo o ideal seria no formato .png
   - Imagens com baixa iluminação possuem uma baixa taxa de reconhecimento
-  - Imagens e, principalmente, vídeos muito grandes demoram muito para serem analisados
+  - Vídeos muito grandes demoram muito para serem analisados
 # Agradecimentos 
   - Ao professor João Paixão pelas aulas
   - Ao [face_recognition](https://github.com/ageitgey/face_recognition) pela IA
