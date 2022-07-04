@@ -27,7 +27,8 @@ No notebook há 4 funções principais:
     >Esta função possui como entrada (filename, number_of_times_to_upsample = 1), sendo o filename o nome/caminho do vídeo a ser alterado e um parâmetro opcional "number_of_times_to_upsample", que comanda a precisão para encontar os rostos mais distantes em cada frame, porém quanto mais alto é o valor, mais lento fica. Definido como 1 por padrão.
 
     >Possui como especificação aplicar um filtro gaussiano apenas nos rostos encontrados pela IA em cada frame e ser rápido o suficiente para retornar um vídeo curto com seus frames alterados e seu áudio.
-Para saber mais sobre essas funções e o funcionamento do Filtro Gaussiano, veja a Wiki
+
+***Para saber mais sobre essas funções e o funcionamento do Filtro Gaussiano, veja a Wiki***
 
 # Exemplo de Uso
 
