@@ -26,29 +26,45 @@ import os
 import shutil
 from tqdm.notebook import tqdm
 
-def censura_rosto(filename, top, right, bottom, left):
+def borra_quadrilatero(filename, top, right, bottom, left):
   
-  #Lendo e borrando toda a imagem usando Convolussão Gaussiana - Blur
+  #Lendo a imagem 
   image = cv2.imread(filename)
 
-  #Extraindo a região da imagem com o rosto
+  #Extraindo a região da imagem 
   face_image = image[top:bottom, left:right]
 
-  #Borrando apenas o rosto usando o filtro gaussiano
+  #Borrando apenas a regiao especificada usando o filtro gaussiano
   face_image = cv2.GaussianBlur(face_image, (153, 153), 0)
 
-  #Colocando a parte extraida de volta na imagem original
+  #Colocando a parte extraida de volta na imagem
   image[top:bottom, left:right] = face_image
 
-  #Gravando a imagem borrada
+  #Gravando a imagem alterada
   cv2.imwrite(filename,image)
 
 def censura_foto(filename, number_of_times_to_upsample = 2):
+ 
+  #Encontrando a posição dos rostos na imagem
+  img = face_recognition.load_image_file(filename)
+  face_locations = face_recognition.face_locations(img, number_of_times_to_upsample)
+  
+  #Lendo a imagem 
+  image = cv2.imread(filename)
+  
+  for (top, right, bottom, left) in face_locations:
 
-  image = face_recognition.load_image_file(filename)
-  face_locations = face_recognition.face_locations(image, number_of_times_to_upsample)
-  for (top, right, bottom, left) in face_locations: 
-    censura_rosto(filename, top, right, bottom, left)
+    #Extraindo a região da imagem com o rosto
+    face_image = image[top:bottom, left:right]
+
+    #Borrando apenas o rosto usando o filtro gaussiano
+    face_image = cv2.GaussianBlur(face_image, (153, 153), 0)
+
+    #Colocando a parte extraida de volta na imagem
+    image[top:bottom, left:right] = face_image 
+  
+  #Gravando a imagem com os rostos borrados
+  cv2.imwrite(filename,image)
 
 def extrai_video(filename):
 
