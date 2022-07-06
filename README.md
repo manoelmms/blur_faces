@@ -14,7 +14,7 @@ No notebook há 4 funções principais:
   - ***borra_quadrilatero***
     >Esta função possui como entrada (filename, top, right, bottom, left), sendo o filename o nome/caminho do arquivo a ser alterado e o "top, right, bottom, left" a posição, em pixels, do quadrilatero a ser borrado.
     
-    >Possui como especificação aplicar um filtro gaussiano apenas na região do rosto especificado.
+    >Possui como especificação aplicar um filtro gaussiano apenas na região do quadrilátero especificado.
   - ***censura_foto***
     >Esta função possui como entrada (filename, number_of_times_to_upsample = 2), sendo o filename o nome/caminho da foto a ser alterada e um parâmetro opcional "number_of_times_to_upsample", que comanda a precisão para encontar os rostos mais distantes na imagem, porém quanto mais alto é o valor, mais lento fica. Definido como 2 por padrão.
     
