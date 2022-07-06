@@ -30,19 +30,18 @@ def censura_rosto(filename, top, right, bottom, left):
   
   #Lendo e borrando toda a imagem usando Convolussão Gaussiana - Blur
   image = cv2.imread(filename)
-  blurred_image = cv2.GaussianBlur(image,(153, 153), 0)
 
-  #Criando uma mask para delimitar a área borrada
-  roi_corners = np.array([[(left,top),(right,top),(right,bottom),(left,bottom)]],dtype = np.int32)
-  mask = np.zeros(image.shape, dtype=np.uint8)
-  channel_count = image.shape[2]
-  ignore_mask_color = (255,)*channel_count
-  cv2.fillPoly(mask, roi_corners, ignore_mask_color)
-  mask_inverse = np.ones(mask.shape).astype(np.uint8)*255 - mask
+  #Extraindo a região da imagem com o rosto
+  face_image = image[top:bottom, left:right]
 
-  #Juntando a mask e a imagem borrada
-  final_image = cv2.bitwise_and(blurred_image, mask) + cv2.bitwise_and(image, mask_inverse)
-  cv2.imwrite(filename,final_image)
+  #Borrando apenas o rosto usando o filtro gaussiano
+  face_image = cv2.GaussianBlur(face_image, (153, 153), 0)
+
+  #Colocando a parte extraida de volta na imagem original
+  image[top:bottom, left:right] = face_image
+
+  #Gravando a imagem borrada
+  cv2.imwrite(filename,image)
 
 def censura_foto(filename, number_of_times_to_upsample = 2):
 
@@ -106,13 +105,48 @@ def censura_video(filename, number_of_times_to_upsample = 1):
   os.remove("./output.mp4")
   print("Concluido com Sucesso!")
 
+"""Testando uma imagem normal, com 5 rostos:"""
+
 from google.colab.patches import cv2_imshow
-original = cv2.imread("test.jpg")
+original = cv2.imread("test.png")
 print("Foto Original: ")
 cv2_imshow(original)
-censura_foto("test.jpg")
+censura_foto("test.png")
 print("Resultado: ")
-result = cv2.imread("test.jpg")
+result = cv2.imread("test.png")
 cv2_imshow(result)
+
+"""Testando uma pintura, sem rostos reais:"""
+
+from google.colab.patches import cv2_imshow
+original = cv2.imread("operarios.png")
+print("Foto Original: ")
+cv2_imshow(original)
+censura_foto("operarios.png")
+print("Resultado: ")
+result = cv2.imread("operarios.png")
+cv2_imshow(result)
+
+from google.colab.patches import cv2_imshow
+original = cv2.imread("largest_selfie.png")
+print("Foto Original: ")
+cv2_imshow(original)
+censura_foto("largest_selfie.png")
+print("Resultado: ")
+result = cv2.imread("largest_selfie.png")
+cv2_imshow(result)
+
+"""Aumentando o upsample de 2 para 4 para ver a diferença no tempo e na precisão:"""
+
+from google.colab.patches import cv2_imshow
+original = cv2.imread("largest_selfie.png")
+print("Foto Original: ")
+cv2_imshow(original)
+censura_foto("largest_selfie.png",4)
+print("Resultado: ")
+result = cv2.imread("largest_selfie.png")
+cv2_imshow(result)
+
+"""Testando em um vídeo 720p de 30 seg:"""
 
 censura_video("test.mp4", 1)
