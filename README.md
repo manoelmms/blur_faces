@@ -11,14 +11,14 @@ O código desse projeto também está disponível para ser usado em um [notebook
 Para o reconhecimento dos rostos, foi usada a IA conhecida como [face_recognition](https://github.com/ageitgey/face_recognition), feita por [ageitgey](https://github.com/ageitgey), pois é uma API bem simples e documentada de Python.
 
 No notebook há 4 funções principais:
-  - ***censura_rosto***
-    >Esta função possui como entrada (filename, top, right, bottom, left), sendo o filename o nome/caminho do arquivo a ser alterado e o "top, right, bottom, left" a posição, em pixels, do rosto encontrado pela IA.
+  - ***borra_quadrilatero***
+    >Esta função possui como entrada (filename, top, right, bottom, left), sendo o filename o nome/caminho do arquivo a ser alterado e o "top, right, bottom, left" a posição, em pixels, do quadrilatero a ser borrado.
     
     >Possui como especificação aplicar um filtro gaussiano apenas na região do rosto especificado.
   - ***censura_foto***
     >Esta função possui como entrada (filename, number_of_times_to_upsample = 2), sendo o filename o nome/caminho da foto a ser alterada e um parâmetro opcional "number_of_times_to_upsample", que comanda a precisão para encontar os rostos mais distantes na imagem, porém quanto mais alto é o valor, mais lento fica. Definido como 2 por padrão.
     
-    >Possui como especificação aplicar um filtro gaussiano apenas nos rostos encontrados pela IA na imagem.
+    >Possui como especificação aplicar um filtro gaussiano(blur/borrar) apenas nos rostos encontrados pela IA na imagem.
   - ***extrai_video***
     >Esta função possui como entrada (filename), sendo o filename o nome/caminho do vídeo a ser extraído em todos os seus frames e seu audio.
     
@@ -26,7 +26,7 @@ No notebook há 4 funções principais:
   - ***censura_video***
     >Esta função possui como entrada (filename, number_of_times_to_upsample = 1), sendo o filename o nome/caminho do vídeo a ser alterado e um parâmetro opcional "number_of_times_to_upsample", que comanda a precisão para encontar os rostos mais distantes em cada frame, porém quanto mais alto é o valor, mais lento fica. Definido como 1 por padrão.
 
-    >Possui como especificação aplicar um filtro gaussiano apenas nos rostos encontrados pela IA em cada frame e ser rápido o suficiente para retornar um vídeo curto com seus frames alterados e seu áudio.
+    >Possui como especificação aplicar um filtro gaussiano(blur/borrar) apenas nos rostos encontrados pela IA em cada frame e ser rápido o suficiente para retornar um vídeo curto com seus frames alterados e seu áudio.
 
 ***Para saber mais sobre essas funções e o funcionamento do Filtro Gaussiano, veja a [Wiki](https://github.com/manoelmms/blur_faces/wiki)***
 
