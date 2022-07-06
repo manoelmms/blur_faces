@@ -28,7 +28,7 @@ No notebook há 4 funções principais:
 
     >Possui como especificação aplicar um filtro gaussiano apenas nos rostos encontrados pela IA em cada frame e ser rápido o suficiente para retornar um vídeo curto com seus frames alterados e seu áudio.
 
-***Para saber mais sobre essas funções e o funcionamento do Filtro Gaussiano, veja a Wiki***
+***Para saber mais sobre essas funções e o funcionamento do Filtro Gaussiano, veja a [Wiki](https://github.com/manoelmms/blur_faces/wiki)***
 
 # Exemplo de Uso
 
